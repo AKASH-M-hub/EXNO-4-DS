@@ -24,24 +24,182 @@ The feature selection techniques used are:
 3.Embedded Method
 
 # CODING AND OUTPUT:
-       ![Screenshot 2024-11-27 223332](https://github.com/user-attachments/assets/e6b837ad-410a-4127-a550-b68b296dcad5)
-       ![Screenshot 2024-11-27 223332](https://github.com/user-attachments/assets/d56a521e-4d11-4543-98d7-6b903024adeb)
+from google.colab import drive
 
-![Screenshot 2024-11-27 223346](https://github.com/user-attachments/assets/6a0eadff-0841-4505-bf7c-b0cdb4bfdd87)
-![Screenshot 2024-11-27 223400](https://github.com/user-attachments/assets/b4055693-4e3f-4670-856b-3d3ce2d3f38c)
-![Screenshot 2024-11-27 223411](https://github.com/user-attachments/assets/e76a66ab-e548-48f8-b79b-9e2570bf008b)
-![Screenshot 2024-11-27 223427](https://github.com/user-attachments/assets/4e14183b-ddf1-4931-a4f3-3e9fe495ba9f)
-![Screenshot 2024-11-27 223444](https://github.com/user-attachments/assets/62f205a9-1332-4725-906b-5ede931cbc56)
-![Screenshot 2024-11-27 223457](https://github.com/user-attachments/assets/93ad38ee-5f14-4ee8-bc6c-96f60993802a)
-![Screenshot 2024-11-27 223509](https://github.com/user-attachments/assets/b108292b-e0ee-407f-b28a-d6bac1104bb5)
-![Screenshot 2024-11-27 223525](https://github.com/user-attachments/assets/a1da6f10-661c-4e92-806d-8534bde1a20c)
-![Screenshot 2024-11-27 223542](https://github.com/user-attachments/assets/03c49c60-0f53-4580-a8a6-190d065de930)
-![Screenshot 2024-11-27 223554](https://github.com/user-attachments/assets/d603a926-c841-4c54-b261-10679b5c9075)
-![Screenshot 2024-11-27 223607](https://github.com/user-attachments/assets/5c4ee410-29c9-4336-9a66-83e94e68d6dd)
-![Screenshot 2024-11-27 223623](https://github.com/user-attachments/assets/6fb4b92a-ad65-4e3c-b2d6-d9246913def0)
-![Screenshot 2024-11-27 223638](https://github.com/user-attachments/assets/1dade522-5e0d-47a0-9092-e8dac07fcf02)
+drive.mount('/content/drive')
+
+![image](https://github.com/user-attachments/assets/4900ad98-3562-4b76-98f7-59070731f596)
+
+ls drive/MyDrive/'Colab Notebooks'/bmi.csv
+
+![image](https://github.com/user-attachments/assets/3a7026f1-9cea-4230-a7ce-897929b1120a)
+
+ls drive/MyDrive/'Colab Notebooks'/'income(1) (1).csv'
+
+![image](https://github.com/user-attachments/assets/3e5342aa-8cd4-49c0-a284-07a93a2ffe16)
+
+import pandas as pd
+
+import numpy as np
+
+from scipy import stats
+
+df=pd.read_csv("drive/MyDrive/Colab Notebooks/bmi.csv")
+
+df
+
+![image](https://github.com/user-attachments/assets/66b01c1f-5c5d-4742-a3ba-c867496a4220)
+
+df.head()
+
+![image](https://github.com/user-attachments/assets/2cb24a8f-eb6c-4db1-9adb-be8d949b4e5c)
+
+df.dropna()
+
+![image](https://github.com/user-attachments/assets/bab1b2e5-9529-4c17-a4c1-b8f8ffd8e486)
+
+max_vals = np.max(np.abs(df[['Height','Weight']]))
+
+max_vals
+
+max_vals
+
+df1=pd.read_csv("drive/MyDrive/Colab Notebooks/bmi.csv")
+
+df1
+
+![image](https://github.com/user-attachments/assets/b3b19cd1-740d-4110-ad9a-1fab3251f31b)
+
+from sklearn.preprocessing import StandardScaler
+
+sc=StandardScaler()
+
+df1[['Height','Weight']] = sc.fit_transform(df1[['Height','Weight']])
+
+df.head(10)
+
+![image](https://github.com/user-attachments/assets/7b7a58ec-ab92-4161-97f8-50c75c63ca9f)
+
+from sklearn.preprocessing import MinMaxScaler
+
+Scaler=MinMaxScaler()
+
+df[['Height','Weight']]=Scaler.fit_transform(df[['Height','Weight']])
+
+df.head(0)
+
+![image](https://github.com/user-attachments/assets/c2be355a-0f40-4146-90e6-62dd9a892e3a)
+
+df2=pd.read_csv("drive/MyDrive/Colab Notebooks/bmi.csv")
+
+df2
+
+![image](https://github.com/user-attachments/assets/501600e7-fd7e-46d7-a70d-e65cc3d4a5fc)
+
+from sklearn.preprocessing import Normalizer
+
+Scaler=Normalizer()
+
+df2[['Height','Weight']]=Scaler.fit_transform(df2[['Height','Weight']])
+
+df2
+
+![image](https://github.com/user-attachments/assets/aaaa5ce3-949e-4b7c-89f3-d3e3f3b49932)
+
+df3=pd.read_csv("drive/MyDrive/Colab Notebooks/bmi.csv")
+
+df3
+
+![image](https://github.com/user-attachments/assets/a4944ea6-2e3b-460f-96ab-3f41c7c9ed10)
+
+from sklearn.preprocessing import MaxAbsScaler
+
+Scaler=MaxAbsScaler()
+
+df3[['Height','Weight']]=Scaler.fit_transform(df3[['Height','Weight']])
+
+df3
+
+![image](https://github.com/user-attachments/assets/731fc06f-c840-4992-ab59-9529c2a80cb9)
+
+df4=pd.read_csv("drive/MyDrive/Colab Notebooks/bmi.csv")
+
+from sklearn.preprocessing import RobustScaler
+
+Scaler=RobustScaler()
+
+df4[['Height','Weight']]=Scaler.fit_transform(df4[['Height','Weight']])
+
+df4.head()
+
+![image](https://github.com/user-attachments/assets/0913fa02-ca57-4421-8426-474eed5ed692)
+
+import matplotlib
+
+import matplotlib.pyplot as plt
+
+import seaborn as sns
+
+import statsmodels.api as sm
+
+from sklearn.model_selection import train_test_split
+
+from sklearn.linear_model import LinearRegression
+
+from sklearn.feature_selection import RFE
+
+from sklearn.linear_model import RidgeCV,LassoCV,Ridge,Lasso
+
+from sklearn.feature_selection import SelectKBest
+
+from sklearn.feature_selection import mutual_info_classif
+
+from sklearn.feature_selection import mutual_info_regression
+
+from sklearn.feature_selection import chi2
+
+df=pd.read_csv('drive/MyDrive/Colab Notebooks/income(1) (1).csv')
+
+df.columns
+
+![image](https://github.com/user-attachments/assets/216b7e14-e997-43b9-9828-ad451d4bc71c)
+
+df1.columns
+
+![image](https://github.com/user-attachments/assets/16647dd2-97b4-40c8-8dfd-a78123f6180a)
+
+import pandas as pd
+
+from sklearn.feature_selection import SelectKBest
+
+from sklearn.feature_selection import chi2
+
+data=pd.read_csv('drive/MyDrive/Colab Notebooks/bmi.csv')
+
+data=data.dropna()
+
+df.columns
+
+df
+
+![image](https://github.com/user-attachments/assets/442c4b33-31a1-4f43-84db-d3bc4db52d50)
+
+import pandas as pd
+
+import numpy as np
+
+from scipy.stats import chi2_contingency
+
+import seaborn as sns
+
+tips=sns.load_dataset('tips')
+
+tips.head()
+
+![image](https://github.com/user-attachments/assets/da8827a4-eec7-4d2c-bf63-b9ee39437774)
+
 
 
 # RESULT:
-       # INCLUDE YOUR RESULT HERE
+     THUS THE ABOVE CODE IS EXECUETED SUCCESSFULLY
 
